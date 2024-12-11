@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.ibb.co/LYnDD3d/istockphoto-114442052-612x612.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .description {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn').hover(
+                function () {
+                    $(this).find('.description').fadeIn(200);
+                },
+                function () {
+                    $(this).find('.description').fadeOut(200);
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+    <div class="center-content">
+        <h1>Welcome to Road Sign Detector</h1>
+        <p>Choose an option to proceed:</p>
+        <div class="container">
+            <a href="{% url 'camera_detect' %}" class="btn">
+                Use Camera
+                <span class="description">Open the camera to detect road signs</span>
+            </a>
+            <a href="{% url 'detect_sign' %}" class="btn">
+                Upload Image
+                <span class="description">Upload an image to analyze road signs</span>
+            </a>
+            <a href="{% url 'history' %}" class="btn">
+                View History
+                <span class="description">View the history of detected road signs</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

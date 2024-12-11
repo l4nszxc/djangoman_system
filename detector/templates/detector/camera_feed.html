@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Feed</title>
+    <style>
+        .camera-container {
+            width: 640px;
+            margin: 0 auto;
+        }
+        .camera-feed {
+            width: 100%;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="camera-container">
+        <h1>Live Camera Feed</h1>
+        <img src="{% url 'video_feed' %}" class="camera-feed" alt="Camera Feed">
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="window.location.href='/'">Stop Camera</button>
+        </div>
+    </div>
+
+    <script>
+        // Auto-reload if stream fails
+        document.querySelector('.camera-feed').onerror = function() {
+            setTimeout(() => {
+                this.src = "{% url 'video_feed' %}";
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

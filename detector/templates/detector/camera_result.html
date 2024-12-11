@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Result</title>
+</head>
+<body>
+    <h1>Road Sign Detected</h1>
+    <p><strong>Label:</strong> {{ label }}</p>
+    <p><strong>Description:</strong> {{ description }}</p>
+    <p><strong>Confidence:</strong> {{ confidence }}</p>
+    <img src="{{ image_url }}" alt="Detected Road Sign">
+    <a href="{% url 'camera_detect' %}">Go Back to Camera</a>
+</body>
+</html>
